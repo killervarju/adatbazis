@@ -33,6 +33,27 @@ INDEX (`orvosKod`),
 INDEX (`bno`),
 PRIMARY KEY(`orvos_id`));
 
+
+ALTER TABLE `gyogyit`.`beteg` ADD `lakcim` varchar(25)
+	NOT NULL FIRST;
 ALTER TABLE `gyogyit`.`beteg` ADD `suly` INT(3) NOT NULL;
 ALTER TABLE `gyogyit`.`beteg` ADD `magassag` INT(3) NOT NULL
 AFTER `tajSzam`;
+
+ALTER TABLE `gyogyit`.`beteg` MODIFY `lakcim` varchar(50)
+	NOT NULL;
+
+ALTER TABLE `gyogyit`.`beteg` DROP `suly`;
+
+ALTER TABLE `gyogyit`.`beteg` DROP PRIMARY KEY;
+
+ALTER TABLE `gyogyit`.`beteg`ADD PRIMARY KEY(`tajSzam`);
+
+INSERT INTO `gyogyit`.`betegsegek` (bno, betegsegNev) VALUES
+	('vicc1', 'köhögés'),
+    	("vicc2", "tüsszentés"),
+    	('vicc3', 'izomláz');
+
+INSERT INTO `gyogyit`.`beteg` (tajSzam, betegNeve) VALUES
+	(111111114, 'Nagy Pisti'),
+    	(111111115, "Kis Kati");
