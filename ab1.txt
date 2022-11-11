@@ -57,3 +57,6 @@ INSERT INTO `gyogyit`.`betegsegek` (bno, betegsegNev) VALUES
 INSERT INTO `gyogyit`.`beteg` (tajSzam, betegNeve) VALUES
 	(111111114, 'Nagy Pisti'),
     	(111111115, "Kis Kati");
+	
+UPDATE `gyogyit`.`betegsegek` SET betegsegNev = 'nátha'
+	WHERE bno = 'vicc2';
