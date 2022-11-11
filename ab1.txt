@@ -1,0 +1,38 @@
+CREATE DATABASE IF NOT EXISTS `alma`
+	CHARACTER SET = utf8 COLLATE = utf8_hungarian_ci;
+CREATE SCHEMA `szilva` COLLATE = utf8_hungarian_ci;
+CREATE DATABASE `proba` COLLATE = utf8_hungarian_ci;
+CREATE DATABASE `probi` COLLATE = utf8_hungarian_ci;
+CREATE DATABASE `porta` COLLATE = utf8_hungarian_ci;
+CREATE DATABASE `posta` COLLATE = utf8_hungarian_ci;
+
+DROP DATABASE `alma`;
+
+USE `11c_kezelesek`;
+SHOW TABLES LIKE "b%";
+
+CREATE DATABASE `gyogyit` COLLATE = utf8_hungarian_ci;
+
+CREATE TABLE `gyogyit`.`betegsegek`(
+`bno` varchar(5) COLLATE utf8_hungarian_ci NOT NULL,
+`betegsegNev` VARCHAR(20) COLLATE utf8_hungarian_ci NOT NULL,
+PRIMARY KEY(`bno`));
+
+CREATE TABLE `gyogyit`.`beteg`(
+`tajSzam` int(9) NOT NULL,
+`betegNeve` VARCHAR(25) COLLATE utf8_hungarian_ci NOT NULL,
+PRIMARY KEY(`tajSzam`));
+
+CREATE TABLE `gyogyit`.`kezel`(
+`taj_Beteg` int(9) NOT NULL,
+`kezel_Datum` date NOT NULL,
+`orvosKod` int(2) NOT NULL,
+`bno` VARCHAR(5) COLLATE utf8_hungarian_ci NOT NULL,
+INDEX (`taj_Beteg`),
+INDEX (`orvosKod`),
+INDEX (`bno`),
+PRIMARY KEY(`orvos_id`));
+
+ALTER TABLE `gyogyit`.`beteg` ADD `suly` INT(3) NOT NULL;
+ALTER TABLE `gyogyit`.`beteg` ADD `magassag` INT(3) NOT NULL
+AFTER `tajSzam`;
